@@ -1,10 +1,23 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { User } from './model/user';
+import { Role } from './model/role';
+
+@Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
-  title = 'Angular-Role-Based-Authorization-Starter';
+  user: User;
+
+  constructor(private authenticationService: AuthenticationService) {
+    this.authenticationService.user.subscribe((x) => (this.user = x));
+  }
+
+  get isAdmin() {
+    return this.user && this.user.role === Role.Admin;
+  }
+
+  logout() {
+    this.authenticationService.logout();
+  }
 }
