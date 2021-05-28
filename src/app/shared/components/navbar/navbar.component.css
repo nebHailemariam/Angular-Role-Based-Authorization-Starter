@@ -1,0 +1,21 @@
+.navbar-brand {
+  color: #ee2c30;
+  padding-right: 2%;
+  padding-left: 5%;
+}
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.modal-footer {
+  border-top: 0 none;
+}
+.modal-title {
+  font-size: 230%;
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    padding-top: 10%;
+  }
+}

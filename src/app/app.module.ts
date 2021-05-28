@@ -4,25 +4,38 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
-import { fakeBackendProvider } from './helpers/fake-backend';
+import { fakeBackendProvider } from './core/fake-backend';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { HomeRoutingModule } from './modules/home/home-routing.module';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { HomeModule } from './modules/home/home.module';
+import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     AppRoutingModule,
+    BrowserModule,
+    HomeModule,
+    HomeRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  declarations: [AppComponent, HomeComponent, AdminComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    AdminComponent,
+    HomeComponent,
+    LoginComponent,
+    NavbarComponent,
+    SignUpComponent,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

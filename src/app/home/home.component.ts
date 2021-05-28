@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from '../model/user';
+import { User } from '../shared/model/user';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 import { UserService } from '../services/user/user.service';
 
@@ -20,12 +20,13 @@ export class HomeComponent {
 
   ngOnInit() {
     this.loading = true;
-    this.userService
-      .getById(this.user.id)
-      .pipe(first())
-      .subscribe((user: User) => {
-        this.loading = false;
-        this.userFromApi = user;
-      });
+    if (this.user)
+      this.userService
+        .getById(this.user.id)
+        .pipe(first())
+        .subscribe((user: User) => {
+          this.loading = false;
+          this.userFromApi = user;
+        });
   }
 }

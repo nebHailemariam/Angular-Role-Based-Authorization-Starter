@@ -1,0 +1,9 @@
+.carousel {
+  height: 60vh;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1%;
+}
+.carousel .carousel-inner {
+  height: 100%;
+}
