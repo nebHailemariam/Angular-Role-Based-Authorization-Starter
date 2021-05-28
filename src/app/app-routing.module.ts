@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './helpers/auth.guard';
-import { Role } from './model/role';
+// import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './core/guard/auth.guard';
+import { Role } from './shared/model/role';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'admin',
@@ -19,11 +19,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: [Role.Admin] },
   },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent,
+  // },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: '',
+    loadChildren: () =>
+      import('./modules/home/home-routing.module').then(
+        (m) => m.HomeRoutingModule
+      ),
   },
-
   // otherwise redirect to home
   { path: '**', redirectTo: '' },
 ];

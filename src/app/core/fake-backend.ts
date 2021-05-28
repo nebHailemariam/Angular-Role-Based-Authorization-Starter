@@ -10,7 +10,7 @@ import {
 import { Observable, of, throwError } from 'rxjs';
 import { delay, materialize, dematerialize } from 'rxjs/operators';
 
-import { Role } from '../model/role';
+import { Role } from '../shared/model/role';
 
 const users = [
   {

@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { User } from '../../model/user';
+import { User } from '../../shared/model/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -24,7 +24,6 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<User> {
-    console.log(username, password);
     return this.http
       .post<any>(`${environment.apiUrl}/users/authenticate`, {
         username,
