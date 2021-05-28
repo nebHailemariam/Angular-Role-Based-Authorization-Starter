@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Mate+SC&family=Noto+Sans+JP:wght@300&family=Poppins:wght@100;200&display=swap");
 .carousel {
   height: 60vh;
   width: 100%;
@@ -6,4 +7,37 @@
 }
 .carousel .carousel-inner {
   height: 100%;
+}
+#title {
+  color: #ee2c30;
+  font-family: "Mate SC", serif;
+  font-size: 150%;
+}
+#bodyText {
+  font-family: Oxygen;
+  font-size: 90%;
+}
+#imageSize {
+  size: 10%;
+  max-height: 20%;
+  margin-top: -10%;
+  padding: 0%;
+}
+@media (max-width: 575.98px) {
+  div.homeBody {
+    padding-top: 0%;
+    margin-top: -40%;
+  }
+}
+@media (min-width: 540px) and (max-width: 768px) {
+  div.homeBody {
+    padding-top: 0%;
+    margin-top: -20%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  div.homeBody {
+    padding-top: 0%;
+    margin-top: -19%;
+  }
 }

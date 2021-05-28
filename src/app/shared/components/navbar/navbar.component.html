@@ -1,190 +1,212 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-light" *ngIf="user">
-  <a class="navbar-brand" href="#">
-    <img
-      src="../../../../assets/images/logo.jpg"
-      width="30"
-      height="30"
-      class="d-inline-block align-top"
-      alt=""
-    />
-    Company
-  </a>
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+<div id="navbar-font-style">
+  <nav class="navbar navbar-expand-sm bg-light navbar-light" *ngIf="user">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../../../../assets/images/logo.jpg"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      />
+      Company
+    </a>
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [ngClass]="{ show: navbarOpen }">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/admin"
+            *ngIf="isAdmin"
+            routerLinkActive="active"
+            >Admin page</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-sm bg-light navbar-light" *ngIf="!user">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../../../../assets/images/logo.jpg"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      />
+      Company
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [ngClass]="{ show: navbarOpen }">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active"
+            >About us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+            >Contact</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-toggle="modal"
+            data-target="#loginModal"
+            routerLinkActive="active"
+            >Login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/sign-up"
+            data-toggle="modal"
+            data-target="#signupModal"
+            routerLinkActive="active"
+            >Sign up</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div *ngIf="loginStatus">
+    <app-login></app-login>
   </div>
-</nav>
 
-<nav class="navbar navbar-expand-sm bg-light navbar-light" *ngIf="!user">
-  <a class="navbar-brand" href="#">
-    <img
-      src="../../../../assets/images/logo.jpg"
-      width="30"
-      height="30"
-      class="d-inline-block align-top"
-      alt=""
-    />
-    Company
-  </a>
+  <!-- Login Modal -->
+  <div
+    class="modal fade"
+    id="loginModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="loginModalLabel"
+    aria-hidden="true"
+    #myHiddenBtn
+  >
+    <div class="modal-dialog" id="loginmodal" #loginmodal role="document">
+      <div class="modal-content">
+        <div class="modal-header d-block">
+          <button
+            type="button"
+            class="close float-right"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title text-center" id="loginModalLabel">
+            Welcome back
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <app-login class="col-12"></app-login>
 
-  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" [ngClass]="{ show: navbarOpen }">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about" routerLinkActive="active"
-          >About us</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/contact" routerLinkActive="active"
-          >Contact</a
-        >
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="modal"
-          data-target="#loginModal"
-          routerLinkActive="active"
-          >Login</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="/sign-up"
-          data-toggle="modal"
-          data-target="#signupModal"
-          routerLinkActive="active"
-          >Sign up</a
-        >
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<div *ngIf="loginStatus">
-  <app-login></app-login>
-</div>
-
-<!-- Login Modal -->
-<div
-  class="modal fade"
-  id="loginModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="loginModalLabel"
-  aria-hidden="true"
-  #myHiddenBtn
->
-  <div class="modal-dialog" id="loginmodal" #loginmodal role="document">
-    <div class="modal-content">
-      <div class="modal-header d-block">
-        <button
-          type="button"
-          class="close float-right"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title text-center" id="loginModalLabel">
-          Welcome back
-        </h5>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <app-login class="col-12"></app-login>
-
-            <div class="col-12">
-              <div class="form-group">
-                <small id="emailHelp" class="form-text text-muted text-center"
-                  >New to Company? Sign up</small
+              <div class="col-12">
+                <div class="form-group">
+                  <small id="emailHelp" class="form-text text-muted text-center"
+                    >New to Company? Sign up</small
+                  >
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn btn-light col-12"
                 >
+                  Sign up
+                </button>
               </div>
-              <button
-                type="submit"
-                class="btn btn-primary btn btn-light col-12"
-              >
-                Sign up
-              </button>
             </div>
           </div>
-        </div>
 
-        <div class="modal-footer d-block">
-          <small id="emailHelp" class="form-text text-muted text-center"
-            >Having trouble logging in? Contact help center</small
-          >
+          <div class="modal-footer d-block">
+            <small id="emailHelp" class="form-text text-muted text-center"
+              >Having trouble logging in? Contact help center</small
+            >
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Sign up Modal -->
-<div
-  class="modal fade"
-  id="signupModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="signupModalLabel"
-  aria-hidden="true"
-  #myHiddenBtn
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header d-block">
-        <button
-          type="button"
-          class="close float-right"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title text-center" id="signupModalLabel">Sign up</h5>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <app-sign-up class="col-12"></app-sign-up>
+  <!-- Sign up Modal -->
+  <div
+    class="modal fade"
+    id="signupModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="signupModalLabel"
+    aria-hidden="true"
+    #myHiddenBtn
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-block">
+          <button
+            type="button"
+            class="close float-right"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title text-center" id="signupModalLabel">Sign up</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <app-sign-up class="col-12"></app-sign-up>
 
-            <div class="col-12">
-              <div class="form-group">
-                <small id="emailHelp" class="form-text text-muted text-center"
-                  >Already on Company? Log in</small
+              <div class="col-12">
+                <div class="form-group">
+                  <small id="emailHelp" class="form-text text-muted text-center"
+                    >Already on Company? Log in</small
+                  >
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn btn-light col-12"
                 >
+                  Sign up
+                </button>
               </div>
-              <button
-                type="submit"
-                class="btn btn-primary btn btn-light col-12"
-              >
-                Sign up
-              </button>
             </div>
           </div>
-        </div>
-        <div class="modal-footer d-block">
-          <small id="emailHelp" class="form-text text-muted text-center"
-            >I accept Company's Terms of Use and Privacy Notice.</small
-          >
-        </div>
-        <div class="modal-footer d-block">
-          <small id="emailHelp" class="form-text text-muted text-center"
-            >Having trouble logging in? Contact help center</small
-          >
+          <div class="modal-footer d-block">
+            <small id="emailHelp" class="form-text text-muted text-center"
+              >I accept Company's Terms of Use and Privacy Notice.</small
+            >
+          </div>
+          <div class="modal-footer d-block">
+            <small id="emailHelp" class="form-text text-muted text-center"
+              >Having trouble logging in? Contact help center</small
+            >
+          </div>
         </div>
       </div>
     </div>
