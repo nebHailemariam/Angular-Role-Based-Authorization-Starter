@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Mate+SC&family=Noto+Sans+JP:wght@300&family=Poppins:wght@100;200&display=swap");
+#navbar-font-style {
+  font-family: "Mate SC", serif;
+}
 .navbar-brand {
   color: #ee2c30;
   padding-right: 2%;
