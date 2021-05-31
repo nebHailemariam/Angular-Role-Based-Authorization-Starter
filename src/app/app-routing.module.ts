@@ -5,19 +5,14 @@ import { AdminComponent } from './admin/admin.component';
 // import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { Role } from './shared/model/role';
-import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'home',
-  //   component: HomeComponent,
-  //   // canActivate: [AuthGuard],
-  // },
   {
-    path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [Role.Admin] },
+    path: 'users',
+    loadChildren: () =>
+      import('./modules/users/users-routing.module').then(
+        (m) => m.UsersRoutingModule
+      ),
   },
   {
     path: '',

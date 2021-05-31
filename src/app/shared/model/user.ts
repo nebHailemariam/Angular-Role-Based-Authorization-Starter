@@ -7,4 +7,5 @@ export class User {
   password?: string;
   role: Role;
   token?: string;
+  __v?: number;
 }

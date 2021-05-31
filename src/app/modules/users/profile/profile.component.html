@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card mt-4">
+    <h4 class="card-header">Profile</h4>
+    <div class="card-body" style="padding-left: 3%">
+      <h5 class="card-title" *ngIf="user">{{ user.username }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted" *ngIf="user">
+        {{ user.role }}
+      </h6>
+      <p class="card-text" *ngIf="user">
+        {{ user.email }}
+      </p>
+      <div class="text-center">
+        <div class="spinner-border" role="status" *ngIf="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

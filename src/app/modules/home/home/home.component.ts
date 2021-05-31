@@ -15,13 +15,13 @@ export class HomeComponent implements OnInit {
   imageUrlsIndex: number = 0;
   ngOnInit(): void {}
 
-  nextImage() {
+  nextImage(): void {
     this.imageUrlsIndex++;
     if (this.imageUrlsIndex == this.imageUrls.length) this.imageUrlsIndex = 0;
     this.image = this.imageUrls[this.imageUrlsIndex % this.imageUrls.length];
     console.log(this.imageUrlsIndex, this.image);
   }
-  prevImage() {
+  prevImage(): void {
     if (this.imageUrlsIndex == 0) this.imageUrlsIndex = this.imageUrls.length;
     this.imageUrlsIndex--;
     this.image = this.imageUrls[this.imageUrlsIndex % this.imageUrls.length];
