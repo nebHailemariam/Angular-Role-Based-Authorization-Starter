@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Mate+SC&family=Noto+Sans+JP:wght@300&family=Poppins:wght@100;200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&family=Roboto+Mono:wght@200&display=swap");
 #navbar-font-style {
-  font-family: "Mate SC", serif;
+  font-family: "Montserrat Alternates", sans-serif;
 }
 .navbar-brand {
   color: #ee2c30;

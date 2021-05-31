@@ -8,21 +8,17 @@ import { Role } from './shared/model/role';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent,
-    // canActivate: [AuthGuard],
-  },
+  // {
+  //   path: 'home',
+  //   component: HomeComponent,
+  //   // canActivate: [AuthGuard],
+  // },
   {
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.Admin] },
   },
-  // {
-  //   path: 'login',
-  //   component: LoginComponent,
-  // },
   {
     path: '',
     loadChildren: () =>
