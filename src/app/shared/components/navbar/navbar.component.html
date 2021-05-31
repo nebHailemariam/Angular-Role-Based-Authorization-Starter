@@ -94,10 +94,6 @@
     </div>
   </nav>
 
-  <div *ngIf="loginStatus">
-    <app-login></app-login>
-  </div>
-
   <!-- Login Modal -->
   <div
     class="modal fade"
@@ -108,7 +104,7 @@
     aria-hidden="true"
     #myHiddenBtn
   >
-    <div class="modal-dialog" id="loginmodal" #loginmodal role="document">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header d-block">
           <button
@@ -116,6 +112,7 @@
             class="close float-right"
             data-dismiss="modal"
             aria-label="Close"
+            id="closeLoginModal"
           >
             <span aria-hidden="true">&times;</span>
           </button>

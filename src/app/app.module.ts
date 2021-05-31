@@ -6,23 +6,34 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // used to create fake backend
 import { fakeBackendProvider } from './core/fake-backend';
 
-import { AppComponent } from './app.component';
+// Routing
 import { AppRoutingModule } from './app-routing.module';
 
+// Core
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './shared/components/login/login.component';
+
 import { HomeRoutingModule } from './modules/home/home-routing.module';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
+
+// Modules
 import { HomeModule } from './modules/home/home.module';
+
+// External Modules
+import { FormsModule } from '@angular/forms';
+
+// Components
+import { AdminComponent } from './admin/admin.component';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
     HomeModule,
     HomeRoutingModule,
     HttpClientModule,
