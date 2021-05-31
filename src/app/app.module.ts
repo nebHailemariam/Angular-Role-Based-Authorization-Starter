@@ -17,6 +17,7 @@ import { HomeRoutingModule } from './modules/home/home-routing.module';
 
 // Modules
 import { HomeModule } from './modules/home/home.module';
+import { UsersModule } from './modules/users/users.module';
 
 // External Modules
 import { FormsModule } from '@angular/forms';
@@ -24,10 +25,13 @@ import { FormsModule } from '@angular/forms';
 // Components
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
+import { UsersRoutingModule } from './modules/users/users-routing.module';
+
+// Services
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   imports: [
@@ -38,11 +42,12 @@ import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
     HomeRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    UsersModule,
+    UsersRoutingModule,
   ],
   declarations: [
     AppComponent,
     AdminComponent,
-    HomeComponent,
     LoginComponent,
     NavbarComponent,
     SignUpComponent,
@@ -50,9 +55,7 @@ import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    // provider used to create fake backend
-    fakeBackendProvider,
+    UserService,
   ],
   bootstrap: [AppComponent],
 })

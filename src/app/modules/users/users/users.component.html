@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card mt-4">
+    <h4 class="card-header">Users</h4>
+    <div class="card-body">
+      <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+      <ul *ngIf="users">
+        <div class="row">
+          <li *ngFor="let user of users">
+            <div
+              class="card col-10"
+              style="width: 18rem; margin-left: 10px; margin-bottom: 10px"
+            >
+              <div class="card-body">
+                <h5 class="card-title">{{ user.username }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ user.role }}</h6>
+                <p class="card-text">
+                  {{ user.email }}
+                </p>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+>
