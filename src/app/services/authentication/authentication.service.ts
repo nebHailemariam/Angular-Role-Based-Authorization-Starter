@@ -41,6 +41,22 @@ export class AuthenticationService {
         })
       );
   }
+  signUp(username: string, password: string, email: string): Observable<User> {
+    return this.http
+      .post<any>(`${environment.apiUrl}/users/signup`, {
+        username,
+        password,
+        email,
+      })
+      .pipe(
+        map((res) => {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          let user = new User();
+          user = user;
+          return user;
+        })
+      );
+  }
 
   logout(): void {
     // remove user from local storage to log user out

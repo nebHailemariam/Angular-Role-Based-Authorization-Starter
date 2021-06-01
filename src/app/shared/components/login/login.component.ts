@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   loading: boolean = false;
   error: any;
+  userInstance: User = new User();
   constructor(
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
@@ -25,7 +26,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
-  userInstance: User = new User();
 
   ngOnInit(): void {}
 
@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
           // Redirecting to the home page
           let returnUrl: string;
           if (this.authenticationService.userValue.role == Role.Admin)
-            returnUrl = '/admin';
-          else returnUrl = '/home';
+            returnUrl = '/users';
+          else returnUrl = '/users/user';
           this.router.navigateByUrl(returnUrl);
         },
         error: (error) => {
