@@ -1,13 +1,28 @@
-<form>
+<form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+  <div class="alert alert-danger alert-dismissible fade show" *ngIf="error">
+    {{ error }}
+  </div>
   <div class="form-group">
-    <label for="name">Full Name </label>
+    <label for="name">Username </label>
     <input
-      type="text"
+      type="txt"
       class="form-control"
-      id="name"
-      aria-describedby="emailHelp"
-      placeholder="Enter your full name"
+      id="username"
+      placeholder="Username"
+      [(ngModel)]="userInstance.username"
+      name="username"
+      #username="ngModel"
+      required
     />
+    <div
+      *ngIf="username.invalid && (username.dirty || username.touched)"
+      class="form-text text-left"
+      id="error"
+    >
+      <div *ngIf="username.errors?.required" id="error">
+        Username is required.
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="email">Email </label>
@@ -17,20 +32,65 @@
       id="email"
       aria-describedby="emailHelp"
       placeholder="name@email.com"
+      [(ngModel)]="userInstance.email"
+      name="email"
+      #email="ngModel"
+      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"
+      required
     />
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" id="error">
+      <p *ngIf="email.errors?.required">Email is a required field!</p>
+      <p *ngIf="email.errors?.pattern">This is not a valid Email!!!</p>
+    </div>
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="userpassword">Password</label>
     <input
       type="password"
       class="form-control"
-      id="password"
-      placeholder="Create password"
+      id="userpassword"
+      placeholder="Enter your password"
+      [(ngModel)]="userInstance.password"
+      name="password"
+      required
+      #password="ngModel"
+      required
+      minlength="6"
     />
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="form-text text-left"
+    >
+      <div
+        *ngIf="password.errors?.required"
+        class="form-text text-left"
+        id="error"
+      >
+        Password is required.
+      </div>
+      <div
+        *ngIf="password.errors?.minlength"
+        class="form-text text-left"
+        id="error"
+      >
+        Password must be at least 6 characters long.
+      </div>
+    </div>
     <small id="emailHelp" class="form-text text-muted text-left"
       >Between 8 and 72 characters</small
     >
   </div>
 
-  <button type="submit" class="btn btn-primary col-12">Join</button>
+  <button
+    type="submit"
+    class="btn btn-primary col-12"
+    [disabled]="!signUpForm.valid"
+  >
+    Join
+  </button>
+  <div class="text-center">
+    <div class="spinner-border" role="status" *ngIf="loading">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 </form>
