@@ -1,6 +1,25 @@
 # AngularRoleBasedAuthorizationStarter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
+<p align="center">
+  <a href="https://patrickjs.com" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg" alt="Angular Starter" />
+  </a>
+</p>
+
+[Angular 12](https://angular.io) starter project implementing Role Based Authorization and Lazy Loading.
+
+## References
+
+- https://jasonwatmore.com/post/2020/09/09/angular-10-role-based-authorization-tutorial-with-example
+- https://www.freecodecamp.org/news/lazy-loading-in-angular-intro-to-ngmodules/#:~:text=Lazy%20loading%20is%20the%20process,might%20be%20loaded%20as%20well
+
+## Application Structure
+
+- `core/` - This folder containing helper modules such as auth guards and interceptors.
+- `modules/` - This folder holds angular modules.
+- `services/` - This folder contains services.
+- `shared/` - This folder contains shared components and models.
+- `models/` - This folder contains the schema definitions for our Mongoose models.
 
 ## Development server
 
