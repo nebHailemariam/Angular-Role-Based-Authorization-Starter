@@ -19,7 +19,7 @@
 - `modules/` - This folder holds angular modules.
 - `services/` - This folder contains services.
 - `shared/` - This folder contains shared components and models.
-- `models/` - This folder contains the schema definitions for our Mongoose models.
+- `models/` - This folder contains the definitions for our models.
 
 ## Development server
 
